@@ -31,7 +31,7 @@ public String getPlayerName(int whoseMove, String xName, String yName) {
 public boolean isLegalMove(State state, int row, int col) {
   return 1 <= row && row <= Constants.BOARD_SIZE &&
     1 <= col && col <= Constants.BOARD_SIZE &&
-    state.getBoardCell(row, col) == Constants.BLANK;
+    state.getBoardCell(row-1, col-1) == Constants.BLANK;
 }
 
 // Prompt for input methods
@@ -49,10 +49,9 @@ public int getMoveRow(int whoseMove, String xName, String oName) {
         } catch (Exception e) {
             System.out.println(Constants.INVALID_ROW_OR_COLUMN);
         }
-    }
+    }  
     return row;
 }
-
 public int getMoveCol(int whoseMove, String xName, String oName) {
     int col=0;
     while (col <= 0 || col >= 4) {
@@ -69,7 +68,7 @@ public int getMoveCol(int whoseMove, String xName, String oName) {
 public boolean startNewGame() {
   System.out.println(Constants.START_NEW_GAME);
   String yesOrNo = scanner.next();
-  return yesOrNo == "T";
+  return yesOrNo.equals("Y") || yesOrNo.equals("y");
 }
 
 // Printing text methods
@@ -86,8 +85,8 @@ public void printBoard(State state) {
     }
 }
 
-public void printInvalidRowOrColumn(int rowOrCol) {
-    System.out.printf(Constants.INVALID_ROW_OR_COLUMN, rowOrCol);
+public void printInvalidRowOrColumn() {
+    System.out.printf(Constants.INVALID_ROW_OR_COLUMN);
 }
 
 public void printInvalidMove(int row, int col) {
@@ -101,6 +100,7 @@ public void printMove(State state, int row, int col) {
     row, 
     col
     );
+    System.out.println();
 } 
 
 public void printWinner(State state) {
@@ -108,6 +108,7 @@ public void printWinner(State state) {
     Constants.WINNER, 
     getXOrO(state.getWhoseMove()), 
     getPlayerName(state.getWhoseMove(), state.getXName(), state.getOName()));
+    System.out.println();
 }
 
 public void printTieGame() {
