@@ -38,7 +38,6 @@ public class State
         }
         return true;
     }
-
     public int getGameState() {
         return gameState;
     }
