@@ -42,14 +42,18 @@ public class UI
 
     public int getMoveRow(int whoseMove, String xName, String oName) {
         int row=0;
-        while (row <= 0 || row >= 4) {
+        boolean value = false;
+        while (!value) {
             try {
                 System.out.printf(Constants.GET_ROW_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove,xName,oName));
-                row = scanner.nextInt();
+                String input = scanner.next();
+                row = Integer.parseInt(input);
                 if (row <= 0 || row >= 4) {
                     System.out.println(Constants.INVALID_ROW_OR_COLUMN);
+                } else {
+                    value = true;
                 }
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 System.out.println(Constants.INVALID_ROW_OR_COLUMN);
 
             }
@@ -58,12 +62,16 @@ public class UI
     }
     public int getMoveCol(int whoseMove, String xName, String oName) {
         int col=0;
-        while (col <= 0 || col >= 4) {
+        boolean value = false;
+        while (!value) {
             try {
                 System.out.printf(Constants.GET_COL_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove, xName, oName));
-                col = scanner.nextInt();
+                String input = scanner.next();
+                col = Integer.parseInt(input);
                 if (col <= 0 || col >= 4) {
                     System.out.println(Constants.INVALID_ROW_OR_COLUMN);
+                } else {
+                    value = true;
                 }
             } catch (Exception e) {
                 System.out.println(Constants.INVALID_ROW_OR_COLUMN);
