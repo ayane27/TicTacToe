@@ -40,26 +40,7 @@ public class UI
         return scanner.next();
     }
 
-    public int getMoveRow(int whoseMove, String xName, String oName) {
-        int row=0;
-        boolean value = false;
-        while (!value) {
-            try {
-                System.out.printf(Constants.GET_ROW_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove,xName,oName));
-                String input = scanner.next();
-                row = Integer.parseInt(input);
-                if (row <= 0 || row >= 4) {
-                    System.out.println(Constants.INVALID_ROW_OR_COLUMN);
-                } else {
-                    value = true;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println(Constants.INVALID_ROW_OR_COLUMN);
-
-            }
-        }  
-        return row;
-    }
+    
     public int getMoveCol(int whoseMove, String xName, String oName) {
         int col=0;
         boolean value = false;
@@ -68,13 +49,13 @@ public class UI
                 System.out.printf(Constants.GET_COL_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove, xName, oName));
                 String input = scanner.next();
                 col = Integer.parseInt(input);
-                if (col <= 0 || col >= 4) {
-                    System.out.println(Constants.INVALID_ROW_OR_COLUMN);
+                if (col <= 0 || col >= 8) {
+                    System.out.println(Constants.INVALID_COLUMN);
                 } else {
                     value = true;
                 }
             } catch (Exception e) {
-                System.out.println(Constants.INVALID_ROW_OR_COLUMN);
+                System.out.println(Constants.INVALID_COLUMN);
             }
         }
         return col;
@@ -93,15 +74,16 @@ public class UI
 
     public void printBoard(State state) {
         System.out.println(Constants.DIVIDER_STRING);
-        for (int row = 0; row < Constants.BOARD_SIZE; row++) {
-            System.out.printf(Constants.BOARD_STRING, getXOrO(state.getBoardCell(row, 0)), getXOrO(state.getBoardCell(row, 1)), getXOrO(state.getBoardCell(row, 2)));
+        for (int row = 0; row < Constants.BOARD_SIZE_ROW; row++) {
+         for (int col = 0; col < Constants.BOARD_SIZE_COLUMN; col++) {
+            System.out.printf(Constants.BOARD_STRING, getXOrO(state.getBoardCell(row, col));
             System.out.println();
             System.out.println(Constants.DIVIDER_STRING);
         }
     }
 
-    public void printInvalidRowOrColumn() {
-        System.out.printf(Constants.INVALID_ROW_OR_COLUMN);
+    public void printInvalidColumn() {
+        System.out.printf(Constants.INVALID_COLUMN);
     }
 
     public void printInvalidMove(int row, int col) {
