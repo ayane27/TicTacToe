@@ -13,11 +13,11 @@ public class State
 
     public boolean isWinner() {
         int total;
-        for (int row=0; row<Constants.BOARD_SIZE; row++) {
+        for (int row=0; row<Constants.BOARD_SIZE_ROW; row++) {
             total = getBoardCell(row, 0) + getBoardCell(row,1) + getBoardCell(row,2);
             if (total == -3 || total == 3) return true;
         }
-        for (int col=0; col<Constants.BOARD_SIZE; col++) {
+        for (int col=0; col<Constants.BOARD_SIZE_COLUMN; col++) {
             total = getBoardCell(0, col) + getBoardCell(1,col) + getBoardCell(2, col);
             if (total == -3 || total == 3) return true;
         }
