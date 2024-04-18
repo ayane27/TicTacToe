@@ -9,7 +9,7 @@ public class State
     private int whoseMove = Constants.X;
     private String xName = "";
     private String oName = "";
-    private int[][] board = new int[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
+    private int[][] board = new int[Constants.BOARD_SIZE_ROW][Constants.BOARD_SIZE_COLUMN];
 
     public boolean isWinner() {
         int total;
@@ -29,8 +29,8 @@ public class State
     }
 
     public boolean isTie() {
-        for (int row=0; row<Constants.BOARD_SIZE; row++) {
-            for (int col=0; col<Constants.BOARD_SIZE; col++) {
+        for (int row=0; row<Constants.BOARD_SIZE_ROW; row++) {
+            for (int col=0; col<Constants.BOARD_SIZE_COLUMN; col++) {
                 if (getBoardCell(row,col) == Constants.BLANK) {
                     return false;
                 }
@@ -79,8 +79,8 @@ public class State
     }
 
     public void clearBoard() {
-        for (int row = 0; row < Constants.BOARD_SIZE; row++) {
-        for (int col = 0; col < Constants.BOARD_SIZE; col++) {
+        for (int row = 0; row < Constants.BOARD_SIZE_ROW; row++) {
+        for (int col = 0; col < Constants.BOARD_SIZE_COL; col++) {
             setBoardCell(row, col, Constants.BLANK);
         }
     }
