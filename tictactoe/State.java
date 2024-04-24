@@ -38,6 +38,16 @@ public class State
         }
         return true;
     }
+
+    public int dropChecker(int col) {
+        for (int row = Constants.BOARD_ROWS-1; row >= 0; row--) {
+            if (board[row][col-1] == Constants.BLANK) {
+                board[row][col-1] = whoseMove;
+                return row +1;
+            }
+        }
+        return -1;
+    }
     public int getGameState() {
         return gameState;
     }
