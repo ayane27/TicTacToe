@@ -75,8 +75,7 @@ public class UI
     public void printBoard(State state) {
         System.out.println(Constants.DIVIDER_STRING);
         for (int row = 0; row < Constants.BOARD_SIZE_ROW; row++) {
-         for (int col = 0; col < Constants.BOARD_SIZE_COLUMN; col++) {
-            System.out.printf(Constants.BOARD_STRING, getXOrO(state.getBoardCell(row, col));
+            System.out.printf(Constants.BOARD_STRING, getXOrO(state.getBoardCell(row, 0)), (state.getBoardCell(row, 1)), (state.getBoardCell(row, 2)), (state.getBoardCell(row, 3)), (state.getBoardCell(row, 4)), (state.getBoardCell(row, 5)), (state.getBoardCell(row, 6)));
             System.out.println();
             System.out.println(Constants.DIVIDER_STRING);
         }
