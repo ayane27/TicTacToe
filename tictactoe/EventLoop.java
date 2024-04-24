@@ -30,12 +30,9 @@ public class EventLoop {
         ui.printBoard(state);
         col = ui.getMoveCol(state.getWhoseMove(), state.getXName(), state.getOName());
         if (ui.isLegalMove(state, row, col)) {
-          for( int row=0; row<Constants.BOARD_SIZE_ROW; row++) {       
-	    	if (state.getBoardCell(row, col) == ‘ ‘) {
-    			state.setboardcell(row, col, 'X');
-					break;
-              }
-          }
+		state.dropChecker(int col);
+			}
+                 }
           state.setGameState(Constants.MAKE_MOVE);
         } 
 
@@ -43,10 +40,7 @@ public class EventLoop {
         ui.printBoard(state);
         col = ui.getMoveCol(state.getWhoseMove(), state.getXName(), state.getOName());
         if (ui.isLegalMove(state, row, col)) {
-          for( int row=0; row<Constants.BOARD_SIZE_ROW; row++) {       
-         		if (state.getBoardCell(row, col) == ‘ ‘) {
-	     	   	 state.setboardcell(row, col, 'O');
-					   break;
+          state.dropChecker(int col);
             }
           }
           state.setGameState(Constants.MAKE_MOVE);
