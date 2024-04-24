@@ -30,7 +30,8 @@ public class UI
 
     public boolean isLegalMove(State state, int row, int col) {
         return
-        1 <= col && col <= Constants.BOARD_SIZE_COLUMN;
+        1 <= col && col <= Constants.BOARD_SIZE_COLUMN && 
+            state.getBoardCell(row, col) == Constants.BLANK;
     
     }
 
