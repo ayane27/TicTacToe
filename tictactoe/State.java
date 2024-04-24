@@ -40,7 +40,7 @@ public class State
     }
 
     public int dropChecker(int col) {
-        for (int row = Constants.BOARD_ROWS-1; row >= 0; row--) {
+        for (int row = Constants.BOARD_SIZE_ROW-1; row >= 0; row--) {
             if (board[row][col-1] == Constants.BLANK) {
                 board[row][col-1] = whoseMove;
                 return row +1;
@@ -90,7 +90,7 @@ public class State
 
     public void clearBoard() {
         for (int row = 0; row < Constants.BOARD_SIZE_ROW; row++) {
-        for (int col = 0; col < Constants.BOARD_SIZE_COL; col++) {
+        for (int col = 0; col < Constants.BOARD_SIZE_COLUMN; col++) {
             setBoardCell(row, col, Constants.BLANK);
         }
     }
