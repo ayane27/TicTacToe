@@ -18,7 +18,7 @@ public class State
                 total = getBoardCell(row, col) + getBoardCell(row, col + 1) +
                             getBoardCell(row, col + 2) + getBoardCell(row, col + 3);
                 if (total == 4 || total == -4) {
-                    return true; // We have a winner
+                    return true; 
                 }
             }
         }
@@ -27,7 +27,7 @@ public class State
                 total = getBoardCell(row, col) + getBoardCell(row + 1, col) +
                             getBoardCell(row + 2, col) + getBoardCell(row + 3, col);
                 if (total == 4 || total == -4) {
-                    return true; // We have a winner
+                    return true; 
                 }
             }
         }
@@ -36,7 +36,7 @@ public class State
                 total = getBoardCell(row, col) + getBoardCell(row - 1, col + 1) +
                             getBoardCell(row - 2, col + 2) + getBoardCell(row - 3, col + 3);
                 if (total == 4 || total == -4) {
-                    return true; // We have a winner
+                    return true; 
                 }
             }
         }
@@ -45,7 +45,7 @@ public class State
                 total = getBoardCell(row, col) + getBoardCell(row + 1, col + 1) +
                             getBoardCell(row + 2, col + 2) + getBoardCell(row + 3, col + 3);
                 if (total == 4 || total == -4) {
-                    return true; // We have a winner
+                    return true; 
                 }
             }
         }
