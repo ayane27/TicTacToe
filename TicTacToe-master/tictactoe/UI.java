@@ -51,7 +51,7 @@ public class UI
                 System.out.printf(Constants.GET_COL_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove, xName, oName));
                 String input = scanner.next();
                 col = Integer.parseInt(input);
-                if (col <= 0 || col >= 8) {
+                if (col < 1 || col > Constants.BOARD_SIZE_COLUMN) {
                     System.out.println(Constants.INVALID_COLUMN);
                 } else {
                     value = true;
