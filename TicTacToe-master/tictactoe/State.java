@@ -13,11 +13,13 @@ public class State
 
     //horizonally 
     public boolean isWinner() { //assisted by ChatGPT 
-        //OpenAI. "ChatGPT." Conversational AI developed by OpenAI. Accessed April 29, 2024. https://openai.com/chatgpt.
+        //OpenAI. "ChatGPT." Conversational AI developed by OpenAI. 
+        Accessed April 29, 2024. https://openai.com/chatgpt.
         int total;
         for (int row = 0; row < Constants.BOARD_SIZE_ROW; row++) {. //iterating 
             for (int col = 0; col < Constants.BOARD_SIZE_COLUMN - 3; col++) {
-                total = getBoardCell(row, col) + getBoardCell(row, col + 1) +   //adds up values in cells
+                total = getBoardCell(row, col) + getBoardCell(row, col + 1) +  
+                    //adds up values in cells
                             getBoardCell(row, col + 2) + getBoardCell(row, col + 3);
                 if (total == 4 || total == -4) { //4=O & -4=X
                     return true; 
