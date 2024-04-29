@@ -1,7 +1,7 @@
-package tictactoe;
+package ConnectFour;
 
 /**
- * Tic-Tac-Toe game constants
+ * Connect Four  game constants
  */
 
 public class Constants
