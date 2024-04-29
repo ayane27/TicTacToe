@@ -1,4 +1,4 @@
-package tictactoe;
+package ConnectFour;
 import java.util.Scanner;
 
 /**
@@ -30,7 +30,7 @@ public class UI
 
     public boolean isLegalMove(State state, int col) {
         return  1 <= col && col<= Constants.BOARD_SIZE_COLUMN && 
-            state.getBoardCell(0, col-1) == Constants.BLANK;
+            state.getBoardCell(0, col-1) == Constants.BLANK; //-1 for zero-indexing
     
     }
 
@@ -41,13 +41,13 @@ public class UI
     }
 
     
-    public int getMoveCol(int whoseMove, String xName, String oName) {
+    public int getMoveCol(int whoseMove, String xName, String oName) { //gets column
         int col=0;
         while (col <= 0 || col > Constants.BOARD_SIZE_COLUMN) {
             try {         
                 System.out.printf(Constants.GET_COL_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove, xName, oName));
                 col = scanner.nextInt();
-                if (col<= 0 || col > Constants.BOARD_SIZE_COLUMN) {
+                if (col<= 0 || col > Constants.BOARD_SIZE_COLUMN) { //if column number is not valid within board
                     System.out.println(Constants.INVALID_COLUMN)
                 }
             } catch (Exception e) {
