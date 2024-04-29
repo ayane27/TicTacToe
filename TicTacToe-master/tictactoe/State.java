@@ -70,8 +70,8 @@ public class State
 
     public int dropChecker(int col) {
         col--;
-        for (int row = Constants.BOARD_SIZE_ROW-1; row >= 0; row--) {
-            if (board[row][col] == Constants.BLANK) {
+        for (int row = Constants.BOARD_SIZE_ROW-1; row >= 0; row--) {   //iterates through board
+            if (board[row][col] == Constants.BLANK) {  //drops checker if cell is empty
                 board[row][col] = whoseMove;
                 return row;
             }
@@ -120,9 +120,9 @@ public class State
     }
     }
     public void clearBoard() {
-        for (int row = 0; row < Constants.BOARD_SIZE_ROW; row++) {
+        for (int row = 0; row < Constants.BOARD_SIZE_ROW; row++) { //iterating 
         for (int col = 0; col < Constants.BOARD_SIZE_COLUMN; col++) {
-            setBoardCell(row, col, Constants.BLANK);
+            setBoardCell(row, col, Constants.BLANK); //sets each cell to empty( value 0)
         }
     }
     }
