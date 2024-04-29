@@ -45,19 +45,16 @@ public class UI
     
     public int getMoveCol(int whoseMove, String xName, String oName) {
         int col=0;
-        boolean value = false;
-        while (!value) {
-            try {
+        while (col <= 0 || col > Constants.BOARD_SIZE_COLUMN) {
+            try {         
                 System.out.printf(Constants.GET_COL_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove, xName, oName));
-                String input = scanner.next();
-                col = Integer.parseInt(input);
-                if (col < 1 || col > Constants.BOARD_SIZE_COLUMN) {
-                    System.out.println(Constants.INVALID_COLUMN);
-                } else {
-                    value = true;
+                col = scanner.nextInt();
+                if (col<= 0 || col > Constants.BOARD_SIZE_COLUMN) {
+                    System.out.println(Constants.INVALID_COLUMN)
                 }
             } catch (Exception e) {
                 System.out.println(Constants.INVALID_COLUMN);
+                scanner.next()
             }
         }
         return col;
