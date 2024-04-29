@@ -47,7 +47,8 @@ public class UI
             try {         
                 System.out.printf(Constants.GET_COL_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove, xName, oName));
                 col = scanner.nextInt();
-                if (col<= 0 || col > Constants.BOARD_SIZE_COLUMN) { //if column number is not valid within board
+                if (col<= 0 || col > Constants.BOARD_SIZE_COLUMN) { 
+                    //if column number is not valid within board
                     System.out.println(Constants.INVALID_COLUMN)
                 }
             } catch (Exception e) {
@@ -72,7 +73,10 @@ public class UI
     public void printBoard(State state) {
         System.out.println(Constants.DIVIDER_STRING);
         for (int row = 0; row < Constants.BOARD_SIZE_ROW; row++) {
-            System.out.printf(Constants.BOARD_STRING, getXOrO(state.getBoardCell(row, 0)), getXOrO(state.getBoardCell(row, 1)), getXOrO(state.getBoardCell(row, 2)), getXOrO(state.getBoardCell(row, 3)), getXOrO(state.getBoardCell(row, 4)), getXOrO(state.getBoardCell(row, 5)), getXOrO(state.getBoardCell(row, 6)));
+            System.out.printf(Constants.BOARD_STRING, getXOrO(state.getBoardCell(row, 0)), 
+           getXOrO(state.getBoardCell(row, 1)), getXOrO(state.getBoardCell(row, 2)), 
+           getXOrO(state.getBoardCell(row, 3)), getXOrO(state.getBoardCell(row, 4)), 
+           getXOrO(state.getBoardCell(row, 5)), getXOrO(state.getBoardCell(row, 6)));
             System.out.println();
             System.out.println(Constants.DIVIDER_STRING);
         }
