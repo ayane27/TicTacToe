@@ -1,7 +1,7 @@
-package tictactoe;
+package ConnectFour;
 
 /**
- * Tic-Tac-Toe state variables.
+ * ConnectFour state variables.
  */
 public class State
 {
@@ -9,19 +9,22 @@ public class State
     private int whoseMove = Constants.X;
     private String xName = "";
     private String oName = "";
-    private int[][] board = new int[Constants.BOARD_SIZE_ROW][Constants.BOARD_SIZE_COLUMN];
+    private int[][] board = new int[Constants.BOARD_SIZE_ROW][Constants.BOARD_SIZE_COLUMN]; //list
 
-    public boolean isWinner() {
+    //horizonally 
+    public boolean isWinner() { //assisted by ChatGPT 
+        //OpenAI. "ChatGPT." Conversational AI developed by OpenAI. Accessed April 29, 2024. https://openai.com/chatgpt.
         int total;
-        for (int row = 0; row < Constants.BOARD_SIZE_ROW; row++) {
+        for (int row = 0; row < Constants.BOARD_SIZE_ROW; row++) {. //iterating 
             for (int col = 0; col < Constants.BOARD_SIZE_COLUMN - 3; col++) {
-                total = getBoardCell(row, col) + getBoardCell(row, col + 1) +
+                total = getBoardCell(row, col) + getBoardCell(row, col + 1) +   //adds up values in cells
                             getBoardCell(row, col + 2) + getBoardCell(row, col + 3);
-                if (total == 4 || total == -4) {
+                if (total == 4 || total == -4) { //4=O & -4=X
                     return true; 
                 }
             }
         }
+        //vertically
         for (int row = 0; row < Constants.BOARD_SIZE_ROW - 3; row++) {
             for (int col = 0; col < Constants.BOARD_SIZE_COLUMN; col++) {
                 total = getBoardCell(row, col) + getBoardCell(row + 1, col) +
@@ -31,6 +34,7 @@ public class State
                 }
             }
         }
+        //diagonally bottom-left to top right
         for (int row = 3; row < Constants.BOARD_SIZE_ROW; row++) {
             for (int col = 0; col < Constants.BOARD_SIZE_COLUMN - 3; col++) {
                 total = getBoardCell(row, col) + getBoardCell(row - 1, col + 1) +
@@ -40,6 +44,7 @@ public class State
                 }
             }
         }
+        //diagonally top-left to bottom-right
          for (int row = 0; row < Constants.BOARD_SIZE_ROW - 3; row++) {
             for (int col = 0; col < Constants.BOARD_SIZE_COLUMN - 3; col++) {
                 total = getBoardCell(row, col) + getBoardCell(row + 1, col + 1) +
