@@ -1,4 +1,4 @@
-package tictactoe;
+package ConnectFour;
 
 public class EventLoop {
 
@@ -29,7 +29,7 @@ public class EventLoop {
       } else if (gameState == Constants.GET_X_MOVE) {
         ui.printBoard(state);
         col = ui.getMoveCol(state.getWhoseMove(), state.getXName(), state.getOName());
-       if (ui.isLegalMove(state, row, col)) {
+       if (ui.isLegalMove(state, col)) {
         state.dropChecker(col);
         state.setGameState(Constants.MAKE_MOVE); 
       }
@@ -37,8 +37,8 @@ public class EventLoop {
       }else if (gameState == Constants.GET_O_MOVE) {
         ui.printBoard(state);
         col = ui.getMoveCol(state.getWhoseMove(), state.getXName(), state.getOName());
-        if (ui.isLegalMove(state, row, col)) {
-        state.dropChecker(col); // Drop the checker and get the row where it was dropped
+        if (ui.isLegalMove(state, col)) {
+        state.dropChecker(col); // Drop the checker if move is within bounds of islegalmove
         state.setGameState(Constants.MAKE_MOVE);
 
       }
