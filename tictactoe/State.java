@@ -1,3 +1,4 @@
+//
 package tictactoe;
 
 /**
@@ -9,22 +10,46 @@ public class State
     private int whoseMove = Constants.X;
     private String xName = "";
     private String oName = "";
-    private int[][] board = new int[Constants.BOARD_SIZE_ROW][Constants.BOARD_SIZE_COLUMN];
+    private int[][] board = new int[Constants.BOARD_SIZE_ROW][Constants.BOARD_SIZE_COLUMN]; //list
 
-    public boolean isWinner() {
+    public boolean isWinner() {   //method for winning conditions-row(horizontal)
         int total;
-        for (int row=0; row<Constants.BOARD_SIZE_ROW; row++) {
-            total = getBoardCell(row, 0) + getBoardCell(row,1) + getBoardCell(row,2);
-            if (total == -3 || total == 3) return true;
+        for (int row = 0; row < Constants.BOARD_SIZE_ROW; row++) { //iterates through cells
+            for (int col = 0; col < Constants.BOARD_SIZE_COLUMN - 3; col++) {
+                total = getBoardCell(row, col) + getBoardCell(row, col + 1) +  //calls on getBoardCell
+                            getBoardCell(row, col + 2) + getBoardCell(row, col + 3);
+                if (total == 4 || total == -4) {  //4=0, -4=X
+                    return true; 
+                }
+            }
         }
-        for (int col=0; col<Constants.BOARD_SIZE_COLUMN; col++) {
-            total = getBoardCell(0, col) + getBoardCell(1,col) + getBoardCell(2, col);
-            if (total == -3 || total == 3) return true;
+        for (int row = 0; row < Constants.BOARD_SIZE_ROW - 3; row++) {  //vertically
+            for (int col = 0; col < Constants.BOARD_SIZE_COLUMN; col++) {
+                total = getBoardCell(row, col) + getBoardCell(row + 1, col) +
+                            getBoardCell(row + 2, col) + getBoardCell(row + 3, col);
+                if (total == 4 || total == -4) {
+                    return true; 
+                }
+            }
         }
-        total = getBoardCell(0, 0) + getBoardCell(1,1) + getBoardCell(2, 2);
-        if (total == -3 || total == 3) return true;
-        total = getBoardCell(2, 0) + getBoardCell(1,1) + getBoardCell(0, 2);
-        if (total == -3 || total == 3) return true;
+        for (int row = 3; row < Constants.BOARD_SIZE_ROW; row++) {   //bottom left to top right
+            for (int col = 0; col < Constants.BOARD_SIZE_COLUMN - 3; col++) {
+                total = getBoardCell(row, col) + getBoardCell(row - 1, col + 1) +
+                            getBoardCell(row - 2, col + 2) + getBoardCell(row - 3, col + 3);
+                if (total == 4 || total == -4) {
+                    return true; 
+                }
+            }
+         }
+         for (int row = 0; row < Constants.BOARD_SIZE_ROW - 3; row++) { //top left to bottom right
+            for (int col = 0; col < Constants.BOARD_SIZE_COLUMN - 3; col++) {
+                total = getBoardCell(row, col) + getBoardCell(row + 1, col + 1) +
+                            getBoardCell(row + 2, col + 2) + getBoardCell(row + 3, col + 3);
+                if (total == 4 || total == -4) {
+                    return true; 
+                }
+            }
+        }
         return false;
     }
 
@@ -37,7 +62,7 @@ public class State
             }
         }
         return true;
-    }
+     }
 
     public int dropChecker(int col) {
         for (int row = Constants.BOARD_SIZE_ROW-1; row >= 0; row--) {
@@ -85,7 +110,10 @@ public class State
     }
 
     public void setBoardCell(int row, int col, int value) {
+       if (row >= 0 && row < Constants.BOARD_SIZE_ROW && col >= 0 && col < Constants.BOARD_SIZE_COLUMN) {
         this.board[row][col] = value;
+    
+    }
     }
 
     public void clearBoard() {
@@ -94,5 +122,5 @@ public class State
             setBoardCell(row, col, Constants.BLANK);
         }
     }
-    }
+     }
 }

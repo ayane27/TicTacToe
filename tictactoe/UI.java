@@ -28,45 +28,37 @@ public class UI
         return (whoseMove == -1) ? xName : yName;
     }
 
-    public boolean isLegalMove(State state, int row, int col) {
-        return
-        1 <= col && col <= Constants.BOARD_SIZE_COLUMN && 
-            state.getBoardCell(row, col) == Constants.BLANK;
-    
-    }
+    public boolean isLegalMove(State state, int col) {
+        return  1 <= col && col<= Constants.BOARD_SIZE_COLUMN && 
+            state.getBoardCell(0, col-1) == Constants.BLANK;
 
-    // Prompt for input methods
+    }
     public String promptForName(String player) {
         System.out.printf(Constants.GET_PLAYER_NAME, player);
         return scanner.next();
     }
 
-    
     public int getMoveCol(int whoseMove, String xName, String oName) {
         int col=0;
-        boolean value = false;
-        while (!value) {
-            try {
+        while (col <= 0 || col > Constants.BOARD_SIZE_COLUMN) {
+            try {         
                 System.out.printf(Constants.GET_COL_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove, xName, oName));
-                String input = scanner.next();
-                col = Integer.parseInt(input);
-                if (col <= 0 || col >= 8) {
+                col = scanner.nextInt();
+                if (col<= 0 || col > Constants.BOARD_SIZE_COLUMN) {
                     System.out.println(Constants.INVALID_COLUMN);
-                } else {
-                    value = true;
                 }
             } catch (Exception e) {
                 System.out.println(Constants.INVALID_COLUMN);
+                scanner.next();
             }
         }
         return col;
     }
-
     public boolean startNewGame() {
         System.out.println(Constants.START_NEW_GAME);
         String yesOrNo = scanner.next();
         return yesOrNo.equals("Y") || yesOrNo.equals("y");
-    }
+     }
 
     // Printing text methods
     public void printWelcome() {

@@ -29,18 +29,18 @@ public class EventLoop {
       } else if (gameState == Constants.GET_X_MOVE) {
         ui.printBoard(state);
         col = ui.getMoveCol(state.getWhoseMove(), state.getXName(), state.getOName());
-       if (ui.isLegalMove(state, row, col)) {
+       if (ui.isLegalMove(state, col)) {
         state.dropChecker(col);
+        state.setGameState(Constants.MAKE_MOVE);
       }
-      state.setGameState(Constants.MAKE_MOVE);
       
       }else if (gameState == Constants.GET_O_MOVE) {
         ui.printBoard(state);
         col = ui.getMoveCol(state.getWhoseMove(), state.getXName(), state.getOName());
-        if (ui.isLegalMove(state, row, col)) {
+        if (ui.isLegalMove(state, col)) {
           state.dropChecker(col);
+          state.setGameState(Constants.MAKE_MOVE);
             }
-        state.setGameState(Constants.MAKE_MOVE);
 
       } else if (gameState == Constants.MAKE_MOVE) {
         ui.printMove(state, row, col);
